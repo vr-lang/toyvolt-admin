@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    border-color: #171717;
+  }
+
+  body {
+    background-color: #F7F3EB;
+    color: #171717;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Custom brutalist scrollbars */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F0EEEE;
+    border-left: 1.5px solid #171717;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #171717;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #315FE8;
+  }
+}
+
+@layer components {
+  /* Neo-brutalist base containers */
+  .brutal-border {
+    border: 2px solid #171717;
+  }
+
+  .brutal-card {
+    background-color: #FFFFFF;
+    border: 2px solid #171717;
+    box-shadow: 3px 3px 0px #171717;
+  }
+
+  .brutal-card-warm {
+    background-color: #FFF9F0;
+    border: 2px solid #171717;
+    box-shadow: 3px 3px 0px #171717;
+  }
+
+  /* Neo-brutalist interactive buttons */
+  .brutal-btn {
+    border: 2px solid #171717;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.1s ease;
+    cursor: pointer;
+    box-shadow: 3px 3px 0px #171717;
+  }
+
+  .brutal-btn:hover:not(:disabled) {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0px #171717;
+  }
+
+  .brutal-btn:active:not(:disabled) {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px #171717;
+  }
+
+  .brutal-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: 2px 2px 0px #171717;
+  }
+
+  /* Primary action variant */
+  .brutal-btn-primary {
+    background-color: #315FE8;
+    color: #FFFFFF;
+  }
+  .brutal-btn-primary:hover:not(:disabled) {
+    background-color: #244BC2;
+  }
+
+  /* Input fields */
+  .brutal-input {
+    background-color: #FFFFFF;
+    border: 2px solid #171717;
+    padding: 0.5rem 0.75rem;
+    font-family: Inter, sans-serif;
+    font-size: 0.875rem;
+    color: #171717;
+    transition: border-color 0.1s ease;
+  }
+
+  .brutal-input:focus {
+    outline: none;
+    border-color: #315FE8;
+    box-shadow: 3px 3px 0px #315FE8;
+  }
+
+  /* Status badges */
+  .brutal-badge {
+    border: 1.5px solid #171717;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 1.5px 1.5px 0px #171717;
+  }
+}
