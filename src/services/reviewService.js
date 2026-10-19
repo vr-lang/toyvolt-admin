@@ -39,6 +39,10 @@ export const reviewService = {
       if (err.response?.status === 404) {
         throw new Error('Backend review endpoint (/admin/reviews/:id/status) is not yet available.');
       }
+      if (!err.response || err.message === 'Network Error') {
+        const res = await api.put(`/admin/reviews/${id}/status`, { status });
+        return res.data;
+      }
       throw err;
     }
   },

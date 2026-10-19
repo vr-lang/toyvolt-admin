@@ -55,8 +55,16 @@ export const orderService = {
     if (cancellationReason) {
       payload.cancellationReason = cancellationReason;
     }
-    const res = await api.patch(`/admin/orders/${id}/status`, payload);
-    return res.data?.data?.order || res.data?.data;
+    try {
+      const res = await api.patch(`/admin/orders/${id}/status`, payload);
+      return res.data?.data?.order || res.data?.data;
+    } catch (err) {
+      if (!err.response || err.message === 'Network Error') {
+        const res = await api.put(`/admin/orders/${id}/status`, payload);
+        return res.data?.data?.order || res.data?.data;
+      }
+      throw err;
+    }
   },
 
   /**

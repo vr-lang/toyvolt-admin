@@ -18,8 +18,16 @@ export const customerService = {
    * Toggle or update customer account status ('active' | 'suspended')
    */
   async updateCustomerStatus(id, status) {
-    const res = await api.patch(`/admin/customers/${id}/status`, { status });
-    return res.data;
+    try {
+      const res = await api.patch(`/admin/customers/${id}/status`, { status });
+      return res.data;
+    } catch (err) {
+      if (!err.response || err.message === 'Network Error') {
+        const res = await api.put(`/admin/customers/${id}/status`, { status });
+        return res.data;
+      }
+      throw err;
+    }
   },
 
   /**
